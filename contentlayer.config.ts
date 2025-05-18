@@ -29,6 +29,10 @@ export const Post = defineDocumentType(() => ({
       type: 'list',
       of: { type: 'string' },
       required: false,
+    },
+    summary: {
+      type: 'string',
+      required: false,
     }
   },
   computedFields: {
