@@ -17,11 +17,36 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    category: {
+      type: 'string',
+      required: false,
+    },
+    subcategory: {
+      type: 'string',
+      required: false,
+    },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: false,
+    }
   },
   computedFields: {
     url: {
       type: 'string',
       resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+    },
+    path: {
+      type: 'string',
+      resolve: (post) => post._raw.flattenedPath,
+    },
+    category_url: {
+      type: 'string',
+      resolve: (post) => post.category ? `/blog/${post.category}` : null,
+    },
+    subcategory_url: {
+      type: 'string',
+      resolve: (post) => post.category && post.subcategory ? `/blog/${post.category}/${post.subcategory}` : null,
     },
     formattedDate: {
       type: 'string',
@@ -29,6 +54,7 @@ export const Post = defineDocumentType(() => ({
         try {
           return new Date(post.date).toLocaleDateString()
         } catch (e) {
+          console.error('Error formatting date:', e)
           return ''
         }
       },

@@ -1,17 +1,10 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Menu,
-  Search,
-  Moon,
-  Sun,
-  ChevronDown,
-  XCircle,
-} from "lucide-react";
+import { Menu, Search, Moon, Sun, ChevronDown, XCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -66,6 +59,9 @@ const Navbar = () => {
             </a>
             <a href="#" className="hover:underline">
               Xonghoti Podcast
+            </a>
+            <a href="blog" className="hover:underline">
+              Blog
             </a>
           </div>
         </DropdownMenuContent>
@@ -156,6 +152,9 @@ const Navbar = () => {
               </a>
               <a href="#" className="block py-2 pl-4">
                 Xonghoti Podcast
+              </a>
+              <a href="blog" className="block py-2 pl-4">
+                Blog
               </a>
             </div>
             <a href="/take-action" className="block py-2">
