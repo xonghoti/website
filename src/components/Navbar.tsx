@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Menu, Search, Moon, Sun, ChevronDown, XCircle } from "lucide-react";
+import { Menu, Search, ChevronDown, XCircle } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -21,13 +21,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
-  const [mounted, setMounted] = useState(false);
   const [language, setLanguage] = useState("en");
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -87,21 +81,6 @@ const Navbar = () => {
           <SelectItem value="as">Assamese</SelectItem>
         </SelectContent>
       </Select>
-      {mounted && (
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          className="h-8 w-8"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? (
-            <Sun className="h-[1.2rem] w-[1.2rem]" />
-          ) : (
-            <Moon className="h-[1.2rem] w-[1.2rem]" />
-          )}
-        </Button>
-      )}
       <Button
         variant="default"
         className="bg-yellow-500 hover:bg-yellow-600 text-black h-9"
@@ -179,21 +158,6 @@ const Navbar = () => {
                 </SelectContent>
               </Select>
             </div>
-            {mounted && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="h-8 w-8"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-[1.2rem] w-[1.2rem]" />
-                ) : (
-                  <Moon className="h-[1.2rem] w-[1.2rem]" />
-                )}
-              </Button>
-            )}
           </div>
         </div>
       )}
